@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Relatar</title>
+<link href="/css/relatar.css" rel="stylesheet" />
+
+
+</head>
+<body>
+	<section layout:fragment="corpo">
+		<div id=body>
+
+			<br />
+
+			<div id="centro">
+
+				<h1 style="margin-left: 10px;">Cadastre seu estudo</h1>
+				<br />
+
+
+
+				<div th:if="${msgSucesso} != null">
+					<b th:text="${msgSucesso}" style="color: blue; margin-left: 9px;"></b>
+					<br /> <br />
+				</div>
+
+				<div th:if="${msgErro} != null">
+					<b th:text="${msgErro}" style="color: red;"></b> <br /> <br />
+				</div>
+
+				<form th:action="@{/salvarRel}" th:object="${relatar}" method="post">
+					<div th:if="${#fields.hasAnyErrors()}">
+
+						<ul>
+							<li th:each="error: ${#fields.detailedErrors()}"><b
+								th:text="${error.message}" style="color: red;"></b></li>
+						</ul>
+					</div>
+				</form>
+
+				<form th:action="@{/salvarRel}" th:object="${relatar}" method="post"
+				enctype="multipart/form-data">
+
+					<input type="hidden" th:field="${relatar.idRelatar}" />
+					
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Data</label> 
+						<input type="text" th:field ="${relatar.data}" class="form-control"
+							id="inputPassword2" placeholder="##/##/####"/>
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Matéria
+							estudada</label> <input type="text" th:field="${relatar.materia}"
+							class="form-control" id="inputPassword2"
+							placeholder="Ex:Geografia" />
+					</div>
+					
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Conteudo</label> 
+						<input type="text" th:field ="${relatar.conteudo}" class="form-control"
+							id="inputPassword2" placeholder="Ex:Cartografia"/>
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Tempo estudado (em minutos)</label> 
+						<input type="number" th:field ="${relatar.duracao}" class="form-control"
+							id="inputPassword2" placeholder="Ex:70"/>
+					</div>
+					
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Método utilizado</label>
+						<input type="text" th:field ="${relatar.metodo}" class="form-control" id="inputPassword2"
+							placeholder="Ex:Pomodoro">
+					</div>
+					
+					
+					
+					
+					
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Documento estudado</label>
+							 <input type="file" th:name="file" 
+								class="form-control" id="inputPassword2"
+								placeholder="adicione o arquivo" multiple >
+							<!--  <input type="hidden" th:field="${relatar.arquivo.id}"/> -->
+					</div>
+					
+					
+					
+					
+					
+					
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Número de
+							questões respondidas:</label> <input type="number"
+							th:field="${relatar.numeroQuestao}" class="form-control"
+							id="inputPassword2" placeholder="add arquivo">
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Número de
+							questões acertadas:</label> <input type="number"
+							th:field="${relatar.numeroAcerto}" class="form-control"
+							id="inputPassword2" placeholder="add arquivo">
+					</div>
+					<div class="form-group mx-sm-3 mb-2">
+						<label for="inputPassword2" class="sr-only">Número de
+							questões erradas:</label> <input type="number"
+							th:field="${relatar.numeroErro}" class="form-control"
+							id="inputPassword2" placeholder="add arquivo">
+					</div>
+					<!--  <div id="radio">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" th:field ="${relatar.radioFacil}" value="estudante"
+								name="GrauDeCompreensão"> <label class="form-check-label">
+								Fácil </label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" th:field ="${relatar.radioMedio}"  value="professor"
+								name="GrauDeCompreensão"> <label class="form-check-label">Médio</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" th:field ="${relatar.radioDificil}"  value="professor"
+								name="GrauDeCompreensão"> <label class="form-check-label">Difícil</label>
+						</div>
+					</div>-->
+					<div id="botaoConf">
+						<!--  <button type="submit" class="btn btn-primary mb-2" />
+						Inserir Dados
+						</button>-->
+						<button type="submit" class="btn btn-outline-dark" >Cadastrar estudo</button>
+					</div>
+					<br/>
+				</form>
+
+			</div>
+			<br/>
+			<br/>
+		</div>
+	</section>
+</body>
+</html>

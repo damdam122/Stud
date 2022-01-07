@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt"
+	xmlns="http://www.w3.org.1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+	<link href="/css/layout.css" rel="stylesheet" />
+	
+	<title></title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light"
+			style="background-color: #94B0B7">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item1"><a class="nav-link active"
+							aria-current="page" >Stud</a></li>
+						<li class="nav-item2"><a class="nav-link active"
+							aria-current="page" href="/estatistica" sec:authorize="hasAuthority('ALUNO')" >Meu desenvolvimento</a></li>
+						<li class="nav-item3"><a class="nav-link active"
+							aria-current="page" href="/relatar" sec:authorize="hasAuthority('ALUNO')" >Cadastrar Estudo</a></li>
+						<li class="nav-item3"><a class="nav-link active"
+							aria-current="page" href="/professor/buscaAluno" sec:authorize="hasAuthority('PROF')">Pesquisar Aluno</a></li>
+						
+						<li class="nav-item4" >
+						
+							<form th:action="@{/logout}" method="post"  style="width:100%">
+								<!-- <input type="submit" value="sair"/>  -->
+								<button type="submit" class="btn btn-outline-dark" value="sair" id="botao">Sair</button>
+							</form>
+						</li>		
+					</ul>
+				</div>
+			</div>
+		</nav>
+		
+ 			
+ 			<div id="body">
+ 			
+ 			<section layout:fragment="corpo">
+ 				
+ 			</section>
+ 			
+ 		</div>
+ 			
+ 	
+</body>
+</html>

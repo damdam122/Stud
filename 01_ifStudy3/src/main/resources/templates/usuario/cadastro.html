@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html
+lang="pt" 
+xmlns="http://www.w3.org/1999/xhtml​"
+xmlns:th="http://www.thymeleaf.org​"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/la...​">
+	<head>
+		<meta charset="UTF-8">
+		<title>Inicio</title>
+		<link href="/css/cadastro.css" rel="stylesheet" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+		<!-- CADASTRO DO IFSTUDY -->
+	</head>
+<body>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #94B0B7">
+			  <div class="container-fluid">
+			    <div class="collapse navbar-collapse" id="navbarNav">
+			      <ul class="navbar-nav">
+			        <li class="nav-item">
+			          <a class="nav-link active" aria-current="page" href="/inicio">Inicio</a>
+			        </li>
+			      </ul>
+			    </div>
+			  </div>
+			</nav>
+			
+	<div id=body>
+
+	<br/>
+		<div id="centro">
+			<h1>Bem-vindo</h1>
+			<p>Cadastre-se</p>
+			
+						
+			<div th:if="${msgSucesso} != null">
+				<b th:text="${msgSucesso}" style= "color: blue;"></b>
+				<br/><br/>
+			</div>
+			
+			<div th:if="${msgErro} != null">
+				<b th:text="${msgErro}" style= "color: red;"></b>
+				<br/><br/>
+			</div>
+		
+			<form th:action="@{/usuarios/salvar}"
+					th:object="${usuario}"
+					method="post" >
+					
+					<!-- Validação de dados -->
+			 <div th:if="${#fields.hasAnyErrors()}" >
+				<ul>
+					<li th:each="error: ${#fields.detailedErrors()}">
+						<b th:text="${error.message}" style="color: red;"></b>
+						
+					</li>
+				</ul>
+			</div> 
+					
+				<input type="hidden" th:field= "${usuario.id}"/>
+					
+				<div class="form-group mx-sm-3 mb-2">
+			    	<label for="inputPassword2" class="sr-only">Nome:</label>
+			    	<input type="text" th:field="${usuario.nome}" class="form-control" id="inputPassword2" placeholder="">
+				 </div>			
+				<div class="form-group mx-sm-3 mb-2">
+			    	<label for="inputPassword2" class="sr-only">Email:</label>
+			    	<input type="email" th:field="${usuario.email}" class="form-control" id="inputPassword2" placeholder="exemplo@gmail.com">
+				 </div>
+				 <div class="form-group mx-sm-3 mb-2">
+					  <label for="inputPassword2" class="sr-only">Senha:</label>
+					    <input type="password" th:field="${usuario.senha}" class="form-control" id="inputPassword2" placeholder="Senha">
+				 </div >
+				 
+				 <div id="escolaridade">
+					<select th:field="${usuario.escolaridade}" class="form-select" aria-label="Default select example">
+					 <option value="">Selecione ...</option>
+					<option th:each= "p: ${escolaridade}"
+							th:text="${p}" th:value="${p}">
+					</select>
+				 </div>	
+				<div id="botaoConf">
+					<input type="submit" class="btn btn-primary mb-2" th:value="${usuario.id} == 0 ? Cadastrar: Editar"> </button>
+				</div>	
+			</form>
+		</div>
+	</div>
+</body>
+</html>
+

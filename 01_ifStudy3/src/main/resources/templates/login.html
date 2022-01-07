@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml​"
+	xmlns:th="http://www.thymeleaf.org​"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/la...​">
+<head>
+<meta charset="UTF-8">
+<title>Inicio</title>
+<link href="/css/inicio.css" rel="stylesheet" />
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light"
+		style="background-color: #94B0B7">
+		<div class="container-fluid">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/inicio">Inicio</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div id=body>
+		<br />
+		<div id="login">
+
+			<table>
+				<tr>
+					<td class="fazerLogin">
+						<h1>Fazer login</h1>
+						<h4>Insira os seus dados para acessar a plataforma</h4>
+						
+						<form method="post" th:action="@{/login}">
+							<div th:replace="fragments/mensagens"></div>
+
+							<div class="form-group mx-sm-3 mb-2">
+								<label for="inputPassword2" class="sr-only">Email:</label> 
+								<input
+									type="text" name="username" required autofocus class="form-control" id="inputPassword2"
+									placeholder="exemplo@gmail.com">
+							</div>
+							<div class="form-group mx-sm-3 mb-2">
+								<label for="inputPassword2" class="sr-only">Senha:</label> <input
+									type="password" name="password" required class="form-control" id="inputPassword2"
+									placeholder="Senha">
+							</div>
+							<input type="checkbox" name="remember-me"/>Lembrar-me <br/>
+							
+							<div id="botaoConf">
+								<button type="submit" class="btn btn-outline-dark" >Entrar
+								</button>
+							</div>
+						</form> <a id="linkCadastrar" href="usuarios/cadastro">Não tenho
+							cadastro</a> <br />
+					</td>
+					<td><img alt="" src="/img/inicioIfStudy.jpg"></td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+</body>
+</html>
+

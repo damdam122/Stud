@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Meu desenvolvimento</title>
+<link href="/css/buscaPerfil.css" rel="stylesheet" />
+
+
+</head>
+<body>
+	<section layout:fragment="corpo">
+		<div id=body>
+
+			<br />
+
+			<h1>Pesquise seu histórico por matéria</h1>
+
+
+			<div th:if="${msgSucesso} != null">
+				<b th:text="${msgSucesso}" style="color: blue;"></b> <br /> <br />
+			</div>
+
+			<div th:if="${msgErro} != null">
+				<b th:text="${msgErro}" style="color: red;"></b> <br /> <br />
+			</div>
+
+			<nav class="navbar navbar-light bg-light" id="buscaMateria">
+				<div class="container-fluid">
+
+					<form class="d-flex" th:action="@{/buscarRel}" method="get">
+
+						<table>
+							<tr>
+								<td>Matéria:</td>
+								<td><input class="form-control me-2" type="search"
+									placeholder="Ex:Geografia" aria-label="Search"
+									th:name="materia"></td>
+							</tr>
+
+							
+							<tr>
+							<tr>
+								<td>
+									<button class="btn btn-outline-success" type="submit">Buscar</button>
+								</td>
+								<td>
+									<!-- <button class="btn btn-outline-success" type="submit" formaction="/perfil" formmethod="get">Limpar</button> -->
+								</td>
+							</tr>
+						</table>
+						<br>
+
+					</form>
+
+
+				</div>
+
+				<div th:if="${not #lists.isEmpty(dadosEncontrados)}">
+
+					<table border="1">
+						<tr>
+
+							<th>Matéria</th>
+							<th>Método</th>
+							<th>Documento</th>
+							<th>Número de Questões Respondidas</th>
+							<th>Número de Questões Acertadas</th>
+							<!--<th>Dificuldade</th>  -->
+
+							<th>Opções</th>
+
+						</tr>
+						<tr th:each="m:${dadosEncontrados}">
+							<td th:text="${m.materia}"></td>
+							<td th:text="${m.metodo}"></td>
+							<td th:text="${m.doc}"></td>
+							<td th:text="${m.numeroQuestao}"></td>
+							<td th:text="${m.numeroAcerto}"></td>
+
+							<td><a th:href="'/editarRel/' + ${m.idM}">Editar</a> <a
+								th:href="'/remover/' + ${m.idM}"
+								onclick="if(!confirm('Remover Dados?')) return false;">Remover</a>
+							</td>
+
+						</tr>
+
+					</table>
+				</div>
+
+			</nav>
+
+
+		</div>
+	</section>
+</body>
+</html>

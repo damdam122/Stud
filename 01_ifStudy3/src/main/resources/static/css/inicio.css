@@ -1,0 +1,56 @@
+@charset "UTF-8";
+	
+	#body{
+		
+		margin:0;
+		padding: 0;
+		background-image: url("/img/4.png");
+		height: 100vh;
+		background-size: contain;
+	}	
+		
+	#login{
+		width: 1000px;
+		background: white;
+		margin-left: auto;
+	    margin-right: auto;
+	    height: 100vh;
+	    border-radius: 20px;
+	    max-height: 500px;
+	    
+	   
+	}
+		
+	h1{
+		color: #7697A0;
+		text-align: center;
+	}
+	img{
+		
+	    max-height:500px;
+	    width: auto;
+	    height: auto;
+	}
+	table{
+		margin-left: auto;
+	    margin-right: auto;
+	   
+	}
+	.fazerLogin{
+		width: 500px;
+	}
+	div#login label{
+	color: 	#D3D3D3;
+	} 
+	div#login h4{
+	 font-size: 15px;
+	 text-align: center;
+	}
+	#botaoConf {
+		 text-align: center 
+	}
+	#linkCadastrar{
+		 text-align: center 
+	}
+	
+	

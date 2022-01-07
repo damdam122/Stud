@@ -1,0 +1,50 @@
+@charset "UTF-8";
+	#body{
+			margin:0;
+			padding: 0;
+			background-image: url("/img/5.png");
+			height: 100vh;
+			background-size: contain;
+	}
+	#centro{
+		/*como deixar no centro*/
+			margin-left: auto;
+			margin-right: auto;
+		
+			width: 500px;
+			background: white;
+			margin-left: auto;
+		    margin-right: auto;
+		    height: 100vh;
+		    border-radius: 20px;
+		    max-height: 500px;
+		    
+	}
+	
+	div#centro h1{
+		color: 	#4A707A;
+	} 
+	#escolaridade{
+		width: 150px;
+		margin: 10px;
+	}
+	h1 {
+		text-align: center;
+		font-weight: 800;
+	}
+	#botaoConf {
+		 text-align: center 
+		 
+	}
+	p {
+	font-weight: 800;
+	margin: 10px;
+	}
+	#radio{
+	margin: 10px;
+		
+	}
+	
+	
+	
+	

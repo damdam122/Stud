@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}">
+<head>
+<meta charset="UTF-8">
+<title>Pesquisando Aluno</title>
+<link href="/css/config.css" rel="stylesheet" />
+
+</head>
+<body>
+	<section layout:fragment="corpo">
+		<div id=body>
+
+			<nav class="navbar navbar-light bg-light" id="pesquisarUsuario">
+				<h1> Pesquise os alunos</h1>
+				<div class="container-fluid" id="buscar">
+					<form class="d-flex" th:action="@{/professor/buscar}" method="get">
+						<input class="form-control me-2" type="text"
+							placeholder="Digite o nome do Usuario" aria-label=""
+							th:name="nome"> <input class="form-control me-2"
+							type="email" placeholder="Digite o email do Usuario"
+							aria-label="" th:name="email">
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="checkbox"
+								id="inlineCheckbox1" th:value="true" th:name="mostrarTodosDados" />
+							Mostrar todos os Dados <label class="form-check-label"
+								for="inlineCheckbox1"> Estudante</label>
+						</div>
+						<button class="btn btn-outline-success" type="submit">Pesquisar</button>
+
+					</form>
+				</div>
+			</nav>
+
+			<br />
+
+			<div id="listaDeUsuarios"
+				th:if="${not #lists.isEmpty(usuariosEncontrados)}">
+				<table>
+					<tr>
+						<th>Nome:</th>
+						<th>Email:</th>
+						<th th:if="${mostrarTodosDados}== true">Escolaridade:</th>
+						<!-- Essa variavel só será exibida se for igual a true -->
+						<th>Opções</th>
+					</tr>
+					<tr th:each="u : ${usuariosEncontrados}">
+
+						<!-- Obs: esse email, nome, profisssao remete aos 
+									atributos na classe usuario -->
+
+						<td th:text="${u.nome}"></td>
+						<td th:text="${u.email}"></td>
+						<td th:if="${mostrarTodosDados}== true"
+							th:text="${u.escolaridade}"></td>
+						<td>
+							<!--<a th:href="'/usuarios/editar/' + ${u.id}">Editar</a>
+							<a th:href="'/usuarios/remover/' + ${u.id}"
+								onclick="if (!confirm('Deseja realmente remover o usuario?')) return false;">
+								
+											<!-- ONCLICK é um evento para o processamento do evento antes de terminar a função do botão
+											nesse caso a mensagem.
+											Criar  uma opção de confirmação e SE ele Nao (!) confirmar vai retornar falso  
+								Remover</a>	--> <a
+							th:href="'/professor/estatisticaProfessor/' + ${u.id}">Relatório</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+	</section>
+</body>
+</html>
